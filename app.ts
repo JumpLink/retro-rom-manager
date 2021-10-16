@@ -13,7 +13,10 @@ const listRoms = async () => {
 };
 
 const getBaseName = (rom: WalkEntry) => {
-  const infoIndex = rom.name.indexOf("(");
+  let infoIndex = rom.name.indexOf("(");
+  if (infoIndex <= 0) {
+    infoIndex = rom.name.indexOf("[");
+  }
   const baseName = rom.name.slice(0, infoIndex - 1).trim();
   return { baseName };
 };
